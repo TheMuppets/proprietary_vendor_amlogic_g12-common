@@ -27,7 +27,6 @@ PRODUCT_COPY_FILES += \
     vendor/amlogic/g12-common/proprietary/vendor/bin/hw/android.hardware.dumpstate@1.1-service.droidlogic:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.dumpstate@1.1-service.droidlogic \
     vendor/amlogic/g12-common/proprietary/vendor/bin/hw/android.hardware.graphics.allocator@4.0-service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.graphics.allocator@4.0-service \
     vendor/amlogic/g12-common/proprietary/vendor/bin/hw/android.hardware.graphics.composer@2.4-service.droidlogic:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.graphics.composer@2.4-service.droidlogic \
-    vendor/amlogic/g12-common/proprietary/vendor/bin/hw/android.hardware.health@2.1-service.droidlogic:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.health@2.1-service.droidlogic \
     vendor/amlogic/g12-common/proprietary/vendor/bin/hw/android.hardware.power.aidl-service.droidlogic:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.power.aidl-service.droidlogic \
     vendor/amlogic/g12-common/proprietary/vendor/bin/hw/android.hardware.thermal@2.0-service.droidlogic:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.thermal@2.0-service.droidlogic \
     vendor/amlogic/g12-common/proprietary/vendor/bin/hw/android.hardware.usb.gadget@1.2-service.droidlogic:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.usb.gadget@1.2-service.droidlogic \
@@ -44,7 +43,6 @@ PRODUCT_COPY_FILES += \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.dumpstate@1.1-service.droidlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.dumpstate@1.1-service.droidlogic.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.graphics.allocator@4.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.graphics.allocator@4.0-service.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.graphics.composer@2.4-service.droidlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.graphics.composer@2.4-service.droidlogic.rc \
-    vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.health@2.1-service.droidlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.health@2.1-service.droidlogic.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.power-service.libperfmgr.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.power-service.libperfmgr.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.thermal@2.0-service.droidlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.thermal@2.0-service.droidlogic.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.usb.gadget@1.2-service.droidlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.usb.gadget@1.2-service.droidlogic.rc \
@@ -79,7 +77,6 @@ PRODUCT_COPY_FILES += \
     vendor/amlogic/g12-common/proprietary/vendor/lib/hw/android.hardware.bluetooth@1.0-impl-droidlogic.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/android.hardware.bluetooth@1.0-impl-droidlogic.so \
     vendor/amlogic/g12-common/proprietary/vendor/lib/hw/android.hardware.graphics.allocator@4.0-impl-arm.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/android.hardware.graphics.allocator@4.0-impl-arm.so \
     vendor/amlogic/g12-common/proprietary/vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-arm.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/android.hardware.graphics.mapper@4.0-impl-arm.so \
-    vendor/amlogic/g12-common/proprietary/vendor/lib/hw/android.hardware.health@2.0-impl-2.1.droidlogic.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/android.hardware.health@2.0-impl-2.1.droidlogic.so \
     vendor/amlogic/g12-common/proprietary/vendor/lib/hw/audio.primary.amlogic.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/audio.primary.amlogic.so \
     vendor/amlogic/g12-common/proprietary/vendor/lib/hw/camera.amlogic.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/camera.amlogic.so \
     vendor/amlogic/g12-common/proprietary/vendor/lib/hw/hdmi_cec.amlogic.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/hdmi_cec.amlogic.so \
@@ -173,7 +170,6 @@ PRODUCT_PACKAGES += \
     droidlogic.software.core \
     android.hardware.dumpstate@1.1-service.droidlogic \
     android.hardware.graphics.composer@2.4-service.droidlogic \
-    android.hardware.health@2.1-servcie.droidlogic \
     android.hardware.power-service \
     android.hardware.thermal@2.0-service.droidlogic \
     android.hardware.usb.gadget@1.2-service.droidlogic \
