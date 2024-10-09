@@ -41,6 +41,15 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
+	name: "android.hardware.graphics.composer@2.4-service.droidlogic.xml",
+	owner: "amlogic",
+	src: "proprietary/vendor/etc/vintf/manifest/android.hardware.graphics.composer@2.4-service.droidlogic.xml",
+	filename_from_src: true,
+	sub_dir: "vintf/manifest",
+	soc_specific: true,
+}
+
+prebuilt_etc_xml {
 	name: "android.hardware.thermal@2.0-service.droidlogic.xml",
 	owner: "amlogic",
 	src: "proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.droidlogic.xml",
@@ -72,41 +81,5 @@ install_symlink {
 	soc_specific: true,
 	installed_location: "lib/hw/vulkan.amlogic.so",
 	symlink_target: "/vendor/lib/egl/libGLES_mali.so",
-}
-
-prebuilt_etc_xml {
-	name: "android.hardware.oemlock@1.0-service.droidlogic.xml",
-	owner: "amlogic",
-	src: "proprietary/vendor/etc/vintf/manifest/android.hardware.oemlock@1.0-service.droidlogic.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
-}
-
-prebuilt_etc_xml {
-	name: "android.hardware.security.keymint-service.amlogic.xml",
-	owner: "amlogic",
-	src: "proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint-service.amlogic.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
-}
-
-prebuilt_etc_xml {
-	name: "manifest_android.hardware.drm@1.4-service.netflix.xml",
-	owner: "amlogic",
-	src: "proprietary/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.netflix.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
-}
-
-prebuilt_etc_xml {
-	name: "manifest_android.hardware.drm@1.4-service.playready.xml",
-	owner: "amlogic",
-	src: "proprietary/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.playready.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
 }
 
