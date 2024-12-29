@@ -2750,6 +2750,15 @@ prebuilt_etc_xml {
     soc_specific: true,
 }
 
+prebuilt_etc_xml {
+    name: "android.hardware.fastboot-service.amlogic.xml",
+    owner: "amlogic",
+    src: "proprietary/recovery/system/etc/vintf/manifest/android.hardware.fastboot-service.amlogic.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    recovery: true,
+}
+
 sh_binary {
     name: "ddrtest",
     owner: "amlogic",
@@ -3407,4 +3416,64 @@ cc_prebuilt_binary {
     },
     prefer: true,
     soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.fastboot-service.amlogic_recovery",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/recovery/system/bin/hw/android.hardware.fastboot-service.amlogic_recovery",
+            ],
+            shared_libs: [
+                "libbase",
+                "libext4_utils",
+                "libfs_mgr",
+                "libhidlbase",
+                "libbinder_ndk",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "android.hardware.fastboot@1.0",
+                "android.hardware.fastboot@1.1",
+                "android.hardware.fastboot-V1-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    recovery: true,
+}
+
+cc_prebuilt_binary {
+    name: "systemcontrol_static",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/recovery/system/bin/systemcontrol_static",
+            ],
+            shared_libs: [
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    recovery: true,
 }

@@ -6,6 +6,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/amlogic/g12-common
 
 PRODUCT_COPY_FILES += \
+    vendor/amlogic/g12-common/proprietary/recovery/system/etc/init/android.hardware.fastboot-service.amlogic_recovery.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/android.hardware.fastboot-service.amlogic_recovery.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/bluetooth/auto_pairing.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/auto_pairing.conf \
     vendor/amlogic/g12-common/proprietary/vendor/etc/bluetooth/blacklist.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/blacklist.conf \
     vendor/amlogic/g12-common/proprietary/vendor/etc/bluetooth/bt_vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/bt_vendor.conf \
@@ -158,6 +159,7 @@ PRODUCT_PACKAGES += \
     memtrack-amlogic.xml \
     thermal.xml \
     vendor.amlogic.hardware.screencontrol@1.0.xml \
+    android.hardware.fastboot-service.amlogic.xml \
     ddrtest \
     android.hardware.audio.service-droidlogic \
     android.hardware.bluetooth@1.1-service-droidlogic \
@@ -177,4 +179,6 @@ PRODUCT_PACKAGES += \
     screencatch \
     screencontrol \
     systemcontrol \
-    tspacktest
+    tspacktest \
+    android.hardware.fastboot-service.amlogic_recovery \
+    systemcontrol_static
