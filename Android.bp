@@ -402,33 +402,6 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "memtrack.amlogic",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/hw/memtrack.amlogic.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libcutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    relative_install_path: "hw",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
     name: "screen_source.amlogic",
     owner: "amlogic",
     strip: {
@@ -1505,6 +1478,34 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libmemtrack-amlogic",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libmemtrack-amlogic.so",
+            ],
+            shared_libs: [
+                "android.hardware.memtrack-V1-ndk",
+                "libbase-v33",
+                "libbinder_ndk",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libmeson_display_adapter_remote",
     owner: "amlogic",
     strip: {
@@ -2454,6 +2455,15 @@ prebuilt_etc_xml {
     soc_specific: true,
 }
 
+prebuilt_etc_xml {
+    name: "memtrack-amlogic.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/memtrack-amlogic.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
 cc_prebuilt_binary {
     name: "DecInfo_test",
     owner: "amlogic",
@@ -2696,6 +2706,35 @@ cc_prebuilt_binary {
                 "libsync",
                 "libutils",
                 "libamgralloc_ext",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.memtrack-service.droidlogic",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.memtrack-service.droidlogic",
+            ],
+            shared_libs: [
+                "libbase-v33",
+                "libbinder_ndk",
+                "libmemtrack-amlogic",
+                "android.hardware.memtrack-V1-ndk",
                 "libc++",
                 "libc",
                 "libm",

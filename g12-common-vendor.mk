@@ -23,6 +23,7 @@ PRODUCT_COPY_FILES += \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/dvb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dvb.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/fs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/fs.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/irblaster1.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/irblaster1.rc \
+    vendor/amlogic/g12-common/proprietary/vendor/etc/init/memtrack-amlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/memtrack-amlogic.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/power.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/power.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/sysfs_permissions.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/sysfs_permissions.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/systemcontrol.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/systemcontrol.rc \
@@ -54,7 +55,6 @@ PRODUCT_PACKAGES += \
     camera.amlogic \
     hdmi_cec.amlogic \
     hwcomposer.amlogic \
-    memtrack.amlogic \
     screen_source.amlogic \
     libAmlAudioOutPort \
     libOmxAudio \
@@ -90,6 +90,7 @@ PRODUCT_PACKAGES += \
     libmediahal_tsplayer \
     libmediahal_tunnelrenderer \
     libmediahal_videodec \
+    libmemtrack-amlogic \
     libmeson_display_adapter_remote \
     libmeson_display_service \
     libms12api_v24 \
@@ -127,6 +128,7 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.droidlogic.xml \
     android.hardware.usb.gadget@1.2-service.droidlogic.xml \
     manifest_android.hardware.drm@1.4-service.widevine.xml \
+    memtrack-amlogic.xml \
     DecInfo_test \
     ddrtest \
     esplayer \
@@ -136,6 +138,7 @@ PRODUCT_PACKAGES += \
     android.hardware.dumpstate@1.1-service.droidlogic \
     android.hardware.graphics.allocator@4.0-service \
     android.hardware.graphics.composer@2.4-service.droidlogic \
+    android.hardware.memtrack-service.droidlogic \
     android.hardware.thermal@2.0-service.droidlogic \
     android.hardware.usb.gadget@1.2-service.droidlogic \
     remotecfg \
