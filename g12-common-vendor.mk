@@ -7,7 +7,6 @@ PRODUCT_SOONG_NAMESPACES += \
 
 PRODUCT_COPY_FILES += \
     vendor/amlogic/g12-common/proprietary/product/etc/permissions/privapp-permissions-atv-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-atv-product.xml \
-    vendor/amlogic/g12-common/proprietary/product/etc/permissions/privapp-permissions-deadpool.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-deadpool.xml \
     vendor/amlogic/g12-common/proprietary/vendor/etc/bluetooth/auto_pairing.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/auto_pairing.conf \
     vendor/amlogic/g12-common/proprietary/vendor/etc/bluetooth/blacklist.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/blacklist.conf \
     vendor/amlogic/g12-common/proprietary/vendor/etc/bluetooth/bt_vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/bt_vendor.conf \
@@ -122,7 +121,6 @@ PRODUCT_PACKAGES += \
     vendor.amlogic.hardware.systemcontrol@1.1 \
     vendor.amlogic.hardware.tvserver@1.0 \
     Adt3LauncherCustomization \
-    DeadpoolService \
     android.hardware.dumpstate@1.1-service.droidlogic.xml \
     android.hardware.graphics.composer@2.4-service.droidlogic.xml \
     android.hardware.thermal@2.0-service.droidlogic.xml \
