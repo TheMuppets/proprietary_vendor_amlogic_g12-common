@@ -148,6 +148,7 @@ PRODUCT_PACKAGES += \
     libHwAudio_dcvdec \
     libHwAudio_dtshd \
     amlogic_fbc_lib \
+    com.google.android.widevine.nonupdatable \
     droidlogic.software.core \
     android.hardware.graphics.composer@3.2-service.droidlogic.xml \
     android.hardware.media.c2@1.2-service.xml \
