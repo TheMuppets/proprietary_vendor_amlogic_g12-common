@@ -46,7 +46,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-resources-vendor \
     android.hardware.graphics.composer@2.2-resources-vendor \
     arm.graphics-V1-ndk_platform \
-    libGLES_mali \
     android.hardware.bluetooth@1.0-impl-droidlogic \
     android.hardware.graphics.allocator@4.0-impl-arm \
     android.hardware.graphics.mapper@4.0-impl-arm \
@@ -142,5 +141,16 @@ PRODUCT_PACKAGES += \
     remotecfg \
     systemcontrol
 
+ifneq ($(filter g12a sm1,$(TARGET_AMLOGIC_SOC)),)
+
 PRODUCT_PACKAGES += \
-    vendor_lib_hw_vulkan_amlogic_so
+    libGLES_mali_g12a
+
+endif
+
+ifneq ($(filter g12b,$(TARGET_AMLOGIC_SOC)),)
+
+PRODUCT_PACKAGES += \
+    libGLES_mali_g12b
+
+endif
