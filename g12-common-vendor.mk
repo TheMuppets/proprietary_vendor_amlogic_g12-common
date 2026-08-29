@@ -20,7 +20,6 @@ PRODUCT_COPY_FILES += \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/android.hardware.usb.gadget@1.2-service.droidlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.usb.gadget@1.2-service.droidlogic.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/bluetooth.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/bluetooth.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/dvb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dvb.rc \
-    vendor/amlogic/g12-common/proprietary/vendor/etc/init/fs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/fs.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/irblaster1.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/irblaster1.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/memtrack-amlogic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/memtrack-amlogic.rc \
     vendor/amlogic/g12-common/proprietary/vendor/etc/init/power.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/power.rc \
