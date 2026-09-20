@@ -607,6 +607,67 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libamffmpeg.vendor",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libamffmpeg.vendor.so",
+            ],
+            shared_libs: [
+                "libutils",
+                "liblog",
+                "libz",
+                "libcutils",
+                "libssl",
+                "libcrypto",
+                "libxml2",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libamffmpegcodec",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libamffmpegcodec.so",
+            ],
+            shared_libs: [
+                "libbinder",
+                "libcutils",
+                "libamffmpeg.vendor",
+                "libstagefright_foundation",
+                "libutils",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libamgralloc_ext",
     owner: "amlogic",
     strip: {
@@ -2222,6 +2283,34 @@ cc_prebuilt_library_shared {
                 "libc++",
                 "libc",
                 "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libvp_hevc_codec_new",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libvp_hevc_codec_new.so",
+            ],
+            shared_libs: [
+                "libcutils",
+                "libutils",
+                "libge2d-2.0",
+                "libm",
+                "liblog",
+                "libc++",
+                "libc",
                 "libdl",
             ],
         },
