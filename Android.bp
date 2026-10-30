@@ -9,7 +9,7 @@ soong_namespace {
 }
 
 cc_prebuilt_library_shared {
-    name: "android.hardware.graphics.composer@2.1-resources-vendor",
+    name: "android.hardware.graphics.composer@2.1-resources-aidl",
     owner: "amlogic",
     strip: {
         none: true,
@@ -17,7 +17,7 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/android.hardware.graphics.composer@2.1-resources-vendor.so",
+                "proprietary/vendor/lib/android.hardware.graphics.composer@2.1-resources-aidl.so",
             ],
             shared_libs: [
                 "android.hardware.graphics.composer@2.1",
@@ -43,7 +43,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "android.hardware.graphics.composer@2.2-resources-vendor",
+    name: "android.hardware.graphics.composer@2.2-resources-aidl",
     owner: "amlogic",
     strip: {
         none: true,
@@ -51,10 +51,10 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/android.hardware.graphics.composer@2.2-resources-vendor.so",
+                "proprietary/vendor/lib/android.hardware.graphics.composer@2.2-resources-aidl.so",
             ],
             shared_libs: [
-                "android.hardware.graphics.composer@2.1-resources-vendor",
+                "android.hardware.graphics.composer@2.1-resources-aidl",
                 "android.hardware.graphics.composer@2.2",
                 "libc++",
                 "libc",
@@ -69,7 +69,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "arm.graphics-V1-ndk_platform",
+    name: "arm.graphics-V4-ndk",
     owner: "amlogic",
     strip: {
         none: true,
@@ -77,7 +77,7 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/arm.graphics-V1-ndk_platform.so",
+                "proprietary/vendor/lib/arm.graphics-V4-ndk.so",
             ],
             shared_libs: [
                 "libbinder_ndk",
@@ -94,7 +94,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "android.hardware.bluetooth@1.0-impl-droidlogic",
+    name: "arm.graphics-V5-ndk",
     owner: "amlogic",
     strip: {
         none: true,
@@ -102,16 +102,10 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/hw/android.hardware.bluetooth@1.0-impl-droidlogic.so",
+                "proprietary/vendor/lib/arm.graphics-V5-ndk.so",
             ],
             shared_libs: [
-                "android.hardware.bluetooth@1.0",
-                "libbase",
-                "libcutils",
-                "libhardware",
-                "libhidlbase",
-                "liblog",
-                "libutils",
+                "libbinder_ndk",
                 "libc++",
                 "libc",
                 "libm",
@@ -120,13 +114,12 @@ cc_prebuilt_library_shared {
         },
     },
     compile_multilib: "32",
-    relative_install_path: "hw",
     prefer: true,
     soc_specific: true,
 }
 
 cc_prebuilt_library_shared {
-    name: "android.hardware.graphics.allocator@4.0-impl-arm",
+    name: "android.hardware.graphics.allocator-V2-arm",
     owner: "amlogic",
     strip: {
         none: true,
@@ -134,22 +127,24 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/hw/android.hardware.graphics.allocator@4.0-impl-arm.so",
+                "proprietary/vendor/lib/hw/android.hardware.graphics.allocator-V2-arm.so",
             ],
             shared_libs: [
-                "libhardware",
-                "liblog",
-                "libcutils",
-                "libion",
-                "libsync",
-                "libutils",
-                "libnativewindow",
+                "libdmabufheap",
+                "arm.graphics-V5-ndk",
                 "libhidlbase",
                 "libgralloctypes",
                 "libdrm",
-                "android.hardware.graphics.allocator@4.0",
-                "android.hardware.graphics.mapper@4.0",
+                "libutils",
+                "libhardware",
+                "libcutils",
+                "android.hardware.graphics.common-V7-ndk",
                 "android.hardware.graphics.common@1.2",
+                "liblog",
+                "libbase",
+                "android.hardware.graphics.allocator-V2-ndk",
+                "android.hardware.graphics.mapper@4.0",
+                "libbinder_ndk",
                 "libc++",
                 "libc",
                 "libm",
@@ -175,6 +170,11 @@ cc_prebuilt_library_shared {
                 "proprietary/vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-arm.so",
             ],
             shared_libs: [
+                "libdmabufheap",
+                "arm.graphics-V5-ndk",
+                "android.hardware.graphics.common-V7-ndk",
+                "android.hardware.graphics.common@1.2",
+                "libbase",
                 "libhardware",
                 "liblog",
                 "libcutils",
@@ -185,10 +185,8 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "libgralloctypes",
                 "libdrm",
-                "arm.graphics-V1-ndk_platform",
                 "libutilscallstack",
                 "android.hardware.graphics.mapper@4.0",
-                "android.hardware.graphics.common@1.2",
                 "libc++",
                 "libc",
                 "libm",
@@ -214,6 +212,7 @@ cc_prebuilt_library_shared {
                 "proprietary/vendor/lib/hw/audio.primary.amlogic.so",
             ],
             shared_libs: [
+                "libbluetooth_audio_session_aidl_shim",
                 "liblog",
                 "libcutils",
                 "libamltinyalsa",
@@ -222,20 +221,18 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libdroidaudiospdif",
                 "libamaudioutils",
-                "libamlaudiorc",
-                "libamadec",
-                "libam_adp",
+                "libamaudioutils_boot",
                 "libnano",
                 "libion",
                 "libamladecs",
                 "libamlresampler",
                 "libamlparser",
-                "libdvbaudioutils",
                 "libamlspeed",
                 "libalsautils",
-                "android.hardware.bluetooth.audio@2.0",
-                "android.hardware.bluetooth.audio@2.0-impl",
-                "libbluetooth_audio_session",
+                "libdmabufheap",
+                "android.hardware.bluetooth.audio-V6-ndk",
+                "libbluetooth_audio_session_aidl",
+                "libbinder_ndk",
                 "libbase",
                 "libfmq",
                 "libms12api_v24",
@@ -275,40 +272,8 @@ cc_prebuilt_library_shared {
                 "libexpat",
                 "libexif",
                 "libcamera_metadata",
-                "libispaaa",
                 "libamgralloc_ext",
-                "libyuv",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    relative_install_path: "hw",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "hdmi_cec.amlogic",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/hw/hdmi_cec.amlogic.so",
-            ],
-            shared_libs: [
-                "libbase",
-                "liblog",
-                "libbinder",
-                "libutils",
-                "libcutils",
-                "libhardware",
+                "libge2d-2.0",
                 "libc++",
                 "libc",
                 "libm",
@@ -345,13 +310,62 @@ cc_prebuilt_library_shared {
                 "libion",
                 "libhardware",
                 "libhidlbase",
-                "libge2d",
+                "libge2d-2.0",
                 "libvideotunnel",
+                "libEGL",
+                "libGLESv1_CM",
+                "libGLESv2",
                 "libamgralloc_ext",
+                "libmeson_mode_policy",
                 "vendor.amlogic.hardware.systemcontrol@1.0",
                 "vendor.amlogic.hardware.systemcontrol@1.1",
+                "libpng",
+                "libz",
+                "vendor.amlogic.hardware.errormonitor@1.0",
+                "liberrormonitorclient",
+                "libteec",
                 "vendor.amlogic.display.meson_display_ipc@1.0",
                 "libmeson_display_service",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "hw",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "mapper.arm",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/hw/mapper.arm.so",
+            ],
+            shared_libs: [
+                "libdmabufheap",
+                "libnativewindow",
+                "arm.graphics-V5-ndk",
+                "android.hardware.graphics.common-V7-ndk",
+                "libhidlbase",
+                "libdrm",
+                "android.hardware.graphics.mapper@4.0",
+                "libgralloctypes",
+                "libutils",
+                "libsync",
+                "libcutils",
+                "libhardware",
+                "android.hardware.graphics.common@1.2",
+                "liblog",
+                "libbase",
                 "libc++",
                 "libc",
                 "libm",
@@ -410,6 +424,8 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "liblog",
                 "libutils",
+                "libamaudioutils",
+                "libamaudioutils_boot",
                 "libc++",
                 "libc",
                 "libm",
@@ -423,7 +439,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libOmxAudio",
+    name: "libPQTableLD",
     owner: "amlogic",
     strip: {
         none: true,
@@ -431,26 +447,12 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libOmxAudio.so",
+                "proprietary/vendor/lib/libPQTableLD.so",
             ],
             shared_libs: [
-                "libbinder",
-                "libcutils",
-                "libdatachunkqueue_alt",
                 "liblog",
-                "libomx_framework_alt",
-                "libOmxBase",
-                "libomx_worker_peer_alt",
-                "libstagefright_foundation",
-                "libthreadworker_alt",
-                "libui",
-                "libutils",
-                "libhidlbase",
-                "libhidlmemory",
-                "android.hidl.token@1.0-utils",
-                "android.hidl.memory@1.0",
-                "android.hidl.allocator@1.0",
-                "libstagefright_omx",
+                "liblog_cout",
+                "libadap_ld",
                 "libc++",
                 "libc",
                 "libm",
@@ -464,7 +466,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libOmxBase",
+    name: "lib_avc_vpcodec",
     owner: "amlogic",
     strip: {
         none: true,
@@ -472,104 +474,39 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libOmxBase.so",
+                "proprietary/vendor/lib/lib_avc_vpcodec.so",
             ],
             shared_libs: [
-                "libui_shim",
-                "libomx_framework_alt",
-                "libomx_worker_peer_alt",
-                "libutils",
                 "libcutils",
-                "libthreadworker_alt",
-                "libomx_clock_utils_alt",
-                "libomx_timed_task_queue_alt",
-                "libui",
-                "liblog",
-                "libbinder",
-                "libamgralloc_ext",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libOmxCore",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libOmxCore.so",
-            ],
-            shared_libs: [
-                "libui_shim",
-                "libomx_framework_alt",
-                "libomx_timed_task_queue_alt",
-                "libomx_clock_utils_alt",
-                "libomx_av_core_alt",
-                "libomx_worker_peer_alt",
-                "libthreadworker_alt",
-                "libfpscalculator_alt",
-                "libdatachunkqueue_alt",
-                "libutils",
-                "libOmxBase",
-                "libOmxVideo",
-                "libstagefrighthw",
-                "liblog",
-                "libbinder",
-                "libcutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libOmxVideo",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libOmxVideo.so",
-            ],
-            shared_libs: [
-                "libui_shim",
-                "libomx_framework_alt",
-                "libomx_worker_peer_alt",
-                "libdatachunkqueue_alt",
-                "libOmxBase",
-                "libbinder",
-                "libcutils",
-                "liblog",
-                "libomx_clock_utils_alt",
-                "libomx_timed_task_queue_alt",
-                "libstagefright_foundation",
-                "libui",
                 "libutils",
                 "libion",
-                "vendor.amlogic.hardware.systemcontrol@1.1",
-                "libthreadworker_alt",
-                "libsystemcontrolservice",
-                "libamgralloc_ext",
-                "libge2d",
+                "liblog",
+                "libm",
+                "libc++",
+                "libc",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libadap_lcd",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libadap_lcd.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "liblog_cout",
                 "libc++",
                 "libc",
                 "libm",
@@ -583,7 +520,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libam_adp",
+    name: "libadap_ld",
     owner: "amlogic",
     strip: {
         none: true,
@@ -591,44 +528,11 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libam_adp.so",
+                "proprietary/vendor/lib/libadap_ld.so",
             ],
             shared_libs: [
-                "libicuuc_vendor",
-                "libcutils",
                 "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libamadec",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libamadec.so",
-            ],
-            shared_libs: [
-                "libutils",
-                "libz",
-                "libbinder",
-                "libcutils",
-                "libamavutils",
-                "liblog",
-                "libamaudioutils",
-                "libdvbaudioutils",
+                "liblog_cout",
                 "libc++",
                 "libc",
                 "libm",
@@ -662,6 +566,7 @@ cc_prebuilt_library_shared {
                 "libaudioutils",
                 "libdroidaudiospdif",
                 "android.hardware.audio.common-util",
+                "libamaudioutils_boot",
                 "libc++",
                 "libm",
                 "libdl",
@@ -674,7 +579,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libamavutils",
+    name: "libamaudioutils_boot",
     owner: "amlogic",
     strip: {
         none: true,
@@ -682,16 +587,76 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libamavutils.so",
+                "proprietary/vendor/lib/libamaudioutils_boot.so",
+            ],
+            shared_libs: [
+                "libamlaudiohal.7.0",
+                "libc",
+                "libcutils",
+                "libutils",
+                "liblog",
+                "libc++",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libamffmpeg.vendor",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libamffmpeg.vendor.so",
             ],
             shared_libs: [
                 "libutils",
-                "libcutils",
-                "libc",
-                "libbinder",
                 "liblog",
-                "libui",
+                "libz",
+                "libcutils",
+                "libssl",
+                "libcrypto",
+                "libxml2",
                 "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libamffmpegcodec",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libamffmpegcodec.so",
+            ],
+            shared_libs: [
+                "libbinder",
+                "libcutils",
+                "libamffmpeg.vendor",
+                "libstagefright_foundation",
+                "libutils",
+                "liblog",
+                "libc++",
+                "libc",
                 "libm",
                 "libdl",
             ],
@@ -714,6 +679,7 @@ cc_prebuilt_library_shared {
                 "proprietary/vendor/lib/libamgralloc_ext.so",
             ],
             shared_libs: [
+                "arm.graphics-V4-ndk",
                 "liblog",
                 "libcutils",
                 "libutils",
@@ -721,9 +687,64 @@ cc_prebuilt_library_shared {
                 "libhardware",
                 "android.hardware.graphics.common@1.0",
                 "android.hardware.graphics.mapper@4.0",
-                "arm.graphics-V1-ndk_platform",
                 "libgralloctypes",
                 "libhidlbase",
+                "libui",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libaml_hal_lcd",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libaml_hal_lcd.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "liblog_cout",
+                "libadap_lcd",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libaml_hal_ld",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libaml_hal_ld.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "liblog_cout",
+                "libPQTableLD",
+                "libadap_ld",
                 "libc++",
                 "libc",
                 "libm",
@@ -754,7 +775,9 @@ cc_prebuilt_library_shared {
                 "libamaudioutils",
                 "libamlparser",
                 "libalsautils",
-                "libms12api_v24",
+                "libamlresampler",
+                "libaudioutils",
+                "libamaudioutils_boot",
                 "libc++",
                 "libc",
                 "libm",
@@ -782,6 +805,7 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "liblog",
                 "libutils",
+                "libamlaudiohal@7.0",
                 "libc++",
                 "libc",
                 "libm",
@@ -795,7 +819,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libamlaudiorc",
+    name: "libamlaudiohal@7.0",
     owner: "amlogic",
     strip: {
         none: true,
@@ -803,16 +827,89 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libamlaudiorc.so",
+                "proprietary/vendor/lib/libamlaudiohal@7.0.so",
             ],
             shared_libs: [
-                "libamaudioutils",
+                "android.media.audio.common.types-V5-cpp",
+                "av-types-aidl-cpp",
+                "libamlaudiohal_deathhandler@7.0",
+                "libaudioclient_aidl_conversion",
+                "libaudiofoundation",
                 "libaudioutils",
+                "libbase",
+                "libbinder",
                 "libcutils",
+                "libfmq",
+                "libhardware",
+                "libhidlbase",
+                "libhidlmemory",
                 "liblog",
                 "libutils",
-                "libtinyalsa",
-                "libalsautils",
+                "android.hardware.audio@7.0",
+                "android.hardware.audio@7.0-util",
+                "android.hardware.audio.common-util",
+                "android.hardware.audio.common@7.0",
+                "android.hardware.audio.common@7.0-util",
+                "android.hardware.audio.effect@7.0",
+                "android.hardware.audio.effect@7.0-util",
+                "android.hidl.allocator@1.0",
+                "android.hidl.memory@1.0",
+                "libmedia_helper",
+                "libamlmediautils@7.0",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libamlaudiohal_deathhandler@7.0",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libamlaudiohal_deathhandler@7.0.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libamlmediautils@7.0",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libamlmediautils@7.0.so",
+            ],
+            shared_libs: [
+                "libbinder",
+                "liblog",
+                "libutils",
                 "libc++",
                 "libc",
                 "libm",
@@ -840,9 +937,10 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "liblog",
                 "libutils",
-                "libaudioutils",
-                "libtinyalsa",
                 "libamaudioutils",
+                "libtinyalsa",
+                "libaudioutils",
+                "libamaudioutils_boot",
                 "libc++",
                 "libc",
                 "libm",
@@ -872,6 +970,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "liblog",
                 "libutils",
+                "libamaudioutils_boot",
                 "libc++",
                 "libc",
                 "libm",
@@ -901,6 +1000,7 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libamaudioutils",
                 "libsonic_ext",
+                "libamaudioutils_boot",
                 "libc++",
                 "libc",
                 "libm",
@@ -929,6 +1029,7 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "liblog",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "libc++",
                 "libc",
                 "libm",
@@ -942,7 +1043,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libdatachunkqueue_alt",
+    name: "libcodec2_aml_audio_decoder",
     owner: "amlogic",
     strip: {
         none: true,
@@ -950,11 +1051,169 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libdatachunkqueue_alt.so",
+                "proprietary/vendor/lib/libcodec2_aml_audio_decoder.so",
             ],
             shared_libs: [
-                "libutils",
+                "android.hardware.media.bufferpool@2.0",
+                "libbase",
+                "libbinder",
                 "liblog",
+                "libstagefright_bufferqueue_helper",
+                "libsfplugin_ccodec_utils",
+                "libcodec2_simple_component",
+                "libstagefright_foundation",
+                "libstagefright_bufferpool@2.0",
+                "libutils",
+                "libcutils",
+                "libcodec2",
+                "libcodec2_vndk",
+                "libutilscallstack",
+                "libevent",
+                "libvendor_c2componentstore",
+                "libvendor_c2common",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcodec2_aml_soft_video_decoder",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libcodec2_aml_soft_video_decoder.so",
+            ],
+            shared_libs: [
+                "android.hardware.graphics.allocator@2.0",
+                "android.hardware.graphics.bufferqueue@2.0",
+                "android.hardware.graphics.mapper@2.0",
+                "android.hardware.media.bufferpool@2.0",
+                "libbase",
+                "libbinder",
+                "liblog",
+                "libstagefright_bufferqueue_helper",
+                "libsfplugin_ccodec_utils",
+                "libcodec2_simple_component",
+                "libstagefright_foundation",
+                "libstagefright_bufferpool@2.0",
+                "libutils",
+                "libcutils",
+                "libcodec2",
+                "libcodec2_vndk",
+                "libui",
+                "libutilscallstack",
+                "libevent",
+                "libvendor_c2componentstore",
+                "libvendor_c2common",
+                "libamgralloc_ext",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcodec2_aml_video_decoder",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libcodec2_aml_video_decoder.so",
+            ],
+            shared_libs: [
+                "android.hardware.graphics.allocator@2.0",
+                "android.hardware.graphics.bufferqueue@2.0",
+                "android.hardware.graphics.mapper@2.0",
+                "android.hardware.media.bufferpool@2.0",
+                "libbase",
+                "libbinder",
+                "liblog",
+                "libstagefright_bufferqueue_helper",
+                "libsfplugin_ccodec_utils",
+                "libcodec2_simple_component",
+                "libstagefright_foundation",
+                "libstagefright_bufferpool@2.0",
+                "libutils",
+                "libcutils",
+                "libcodec2",
+                "libcodec2_vndk",
+                "libui",
+                "libutilscallstack",
+                "libchrome",
+                "libevent",
+                "libvendor_c2componentstore",
+                "libvendor_c2common",
+                "libamgralloc_ext",
+                "libstagefright_xmlparser",
+                "libsystemcontrolservice",
+                "vendor.amlogic.hardware.systemcontrol@1.0",
+                "vendor.amlogic.hardware.systemcontrol@1.1",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcodec2_aml_video_encoder",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libcodec2_aml_video_encoder.so",
+            ],
+            shared_libs: [
+                "android.hardware.graphics.allocator@2.0",
+                "android.hardware.graphics.bufferqueue@2.0",
+                "android.hardware.graphics.mapper@2.0",
+                "android.hardware.media.bufferpool@2.0",
+                "libbase",
+                "libbinder",
+                "liblog",
+                "libstagefright_bufferqueue_helper",
+                "libsfplugin_ccodec_utils",
+                "libcodec2_simple_component",
+                "libstagefright_foundation",
+                "libstagefright_bufferpool@2.0",
+                "libutils",
+                "libcutils",
+                "libcodec2",
+                "libcodec2_vndk",
+                "libui",
+                "libutilscallstack",
+                "libevent",
+                "libvendor_c2componentstore",
+                "libvendor_c2common",
+                "libamgralloc_ext",
                 "libc++",
                 "libc",
                 "libm",
@@ -994,7 +1253,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libdsm",
+    name: "liberrormonitorclient",
     owner: "amlogic",
     strip: {
         none: true,
@@ -1002,41 +1261,16 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libdsm.so",
+                "proprietary/vendor/lib/liberrormonitorclient.so",
             ],
             shared_libs: [
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libdvbaudioutils",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libdvbaudioutils.so",
-            ],
-            shared_libs: [
-                "libcutils",
+                "vendor.amlogic.hardware.errormonitor@1.0",
+                "libbase",
                 "libutils",
+                "libcutils",
                 "liblog",
-                "libaudioutils",
-                "libamaudioutils",
-                "libamavutils",
-                "libam_adp",
+                "libhidlbase",
+                "libjsoncpp",
                 "libc++",
                 "libc",
                 "libm",
@@ -1109,7 +1343,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libfpscalculator_alt",
+    name: "libge2d-2.0",
     owner: "amlogic",
     strip: {
         none: true,
@@ -1117,33 +1351,7 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libfpscalculator_alt.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libge2d",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libge2d.so",
+                "proprietary/vendor/lib/libge2d-2.0.so",
             ],
             shared_libs: [
                 "liblog",
@@ -1161,7 +1369,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libicuuc_vendor",
+    name: "libhdmi_cec",
     owner: "amlogic",
     strip: {
         none: true,
@@ -1169,9 +1377,13 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libicuuc_vendor.so",
+                "proprietary/vendor/lib/libhdmi_cec.so",
             ],
             shared_libs: [
+                "libcutils",
+                "libutils",
+                "liblog",
+                "libbinder",
                 "libc++",
                 "libc",
                 "libm",
@@ -1185,7 +1397,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libispaaa",
+    name: "liblog_cout",
     owner: "amlogic",
     strip: {
         none: true,
@@ -1193,7 +1405,7 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libispaaa.so",
+                "proprietary/vendor/lib/liblog_cout.so",
             ],
             shared_libs: [
                 "liblog",
@@ -1239,6 +1451,87 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libmediahal_dmabufmanage",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libmediahal_dmabufmanage.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmediahal_hardware_demux",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libmediahal_hardware_demux.so",
+            ],
+            shared_libs: [
+                "libutils",
+                "libcutils",
+                "libsync",
+                "liblog",
+                "libmediahal_mediasync",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmediahal_mediametrics",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libmediahal_mediametrics.so",
+            ],
+            shared_libs: [
+                "libcutils",
+                "libutils",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libmediahal_mediasync",
     owner: "amlogic",
     strip: {
@@ -1253,8 +1546,6 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libcutils",
                 "liblog",
-                "vendor.amlogic.hardware.systemcontrol@1.0",
-                "vendor.amlogic.hardware.systemcontrol@1.1",
                 "libc++",
                 "libc",
                 "libm",
@@ -1281,23 +1572,13 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "libutils",
                 "libcutils",
-                "libsync",
                 "liblog",
                 "libbase",
-                "libbinder",
-                "vendor.amlogic.hardware.systemcontrol@1.0",
-                "vendor.amlogic.hardware.systemcontrol@1.1",
-                "android.hardware.graphics.allocator@2.0",
-                "android.hardware.graphics.bufferqueue@1.0",
-                "android.hardware.graphics.mapper@2.0",
                 "libmedia_omx",
-                "libui",
-                "libhidlbase",
-                "libmediandk",
-                "libstagefright_bufferqueue_helper",
-                "libstagefright_foundation",
                 "libamgralloc_ext",
                 "libsystemcontrolservice",
+                "vendor.amlogic.hardware.systemcontrol@1.0",
+                "vendor.amlogic.hardware.systemcontrol@1.1",
                 "libmediahal_videodec",
                 "libmediahal_resman",
                 "libmediahal_mediasync",
@@ -1351,26 +1632,17 @@ cc_prebuilt_library_shared {
             ],
             shared_libs: [
                 "libsystemcontrolservice",
+                "vendor.amlogic.hardware.systemcontrol@1.0",
+                "vendor.amlogic.hardware.systemcontrol@1.1",
                 "libutils",
                 "libcutils",
                 "libsync",
                 "liblog",
                 "libbase",
                 "libbinder",
-                "vendor.amlogic.hardware.systemcontrol@1.0",
-                "vendor.amlogic.hardware.systemcontrol@1.1",
-                "android.hardware.graphics.allocator@2.0",
-                "android.hardware.graphics.bufferqueue@1.0",
-                "android.hardware.graphics.mapper@2.0",
-                "libmedia_omx",
                 "libui",
-                "libhidlbase",
-                "libmediandk",
-                "libstagefright_bufferqueue_helper",
-                "libstagefright_foundation",
                 "libmediahal_mediasync",
                 "libmediahal_videodec",
-                "libmediahal_resman",
                 "libc++",
                 "libc",
                 "libm",
@@ -1400,7 +1672,6 @@ cc_prebuilt_library_shared {
                 "liblog",
                 "libui",
                 "libmediahal_mediasync",
-                "libamgralloc_ext",
                 "libc++",
                 "libc",
                 "libm",
@@ -1425,10 +1696,66 @@ cc_prebuilt_library_shared {
                 "proprietary/vendor/lib/libmediahal_videodec.so",
             ],
             shared_libs: [
+                "libui",
+                "libamgralloc_ext",
                 "liblog",
                 "libutils",
                 "libcutils",
                 "libion",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmediaproxy_consumer",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libmediaproxy_consumer.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmediaproxy_producer",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libmediaproxy_producer.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libutils",
+                "libcutils",
                 "libc++",
                 "libc",
                 "libm",
@@ -1454,7 +1781,7 @@ cc_prebuilt_library_shared {
             ],
             shared_libs: [
                 "android.hardware.memtrack-V1-ndk",
-                "libbase-v33",
+                "libbase",
                 "libbinder_ndk",
                 "liblog",
                 "libc++",
@@ -1484,12 +1811,12 @@ cc_prebuilt_library_shared {
                 "android.hardware.graphics.mapper@2.0",
                 "android.hardware.graphics.mapper@3.0",
                 "android.hardware.graphics.mapper@4.0",
-                "vendor.amlogic.display.meson_display_ipc@1.0",
                 "liblog",
                 "libhardware",
                 "libcutils",
                 "libutils",
                 "libhidlbase",
+                "libamgralloc_ext",
                 "libc++",
                 "libc",
                 "libm",
@@ -1524,6 +1851,36 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libbase",
                 "libion",
+                "vendor.amlogic.hardware.errormonitor@1.0",
+                "liberrormonitorclient",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmeson_mode_policy",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libmeson_mode_policy.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libz",
                 "libc++",
                 "libc",
                 "libm",
@@ -1552,6 +1909,7 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "liblog",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "libc++",
                 "libc",
                 "libm",
@@ -1578,154 +1936,6 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "liblog",
                 "libcutils",
-                "libutils",
-                "libc++",
-                "libdl",
-                "libc",
-                "libm",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libomx_av_core_alt",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libomx_av_core_alt.so",
-            ],
-            shared_libs: [
-                "libbinder",
-                "libcutils",
-                "liblog",
-                "libomx_framework_alt",
-                "libstagefright_foundation",
-                "libutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libomx_clock_utils_alt",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libomx_clock_utils_alt.so",
-            ],
-            shared_libs: [
-                "libbinder",
-                "libcutils",
-                "liblog",
-                "libutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libomx_framework_alt",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libomx_framework_alt.so",
-            ],
-            shared_libs: [
-                "libcutils",
-                "liblog",
-                "libutils",
-                "libbinder",
-                "libamgralloc_ext",
-                "libdl",
-                "libc++",
-                "libc",
-                "libm",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libomx_timed_task_queue_alt",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libomx_timed_task_queue_alt.so",
-            ],
-            shared_libs: [
-                "libbinder",
-                "libcutils",
-                "liblog",
-                "libutils",
-                "libthreadworker_alt",
-                "libomx_clock_utils_alt",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libomx_worker_peer_alt",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libomx_worker_peer_alt.so",
-            ],
-            shared_libs: [
-                "libbinder",
-                "libcutils",
-                "liblog",
-                "libomx_framework_alt",
-                "libthreadworker_alt",
-                "libstagefright_foundation",
                 "libutils",
                 "libc++",
                 "libc",
@@ -1758,6 +1968,138 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libbinder",
                 "libfbc",
+                "libvideotunnel",
+                "libsystemcontrolservice",
+                "vendor.amlogic.hardware.systemcontrol@1.1",
+                "libaml_hal_lcd",
+                "libaml_hal_ld",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libprovision",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libprovision.so",
+            ],
+            shared_libs: [
+                "libcutils",
+                "libteec",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libscreencontrol_jni",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libscreencontrol_jni.so",
+            ],
+            shared_libs: [
+                "vendor.amlogic.hardware.screencontrol@1.0",
+                "libscreencontrolclient",
+                "libcutils",
+                "libutils",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libscreencontrolclient",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libscreencontrolclient.so",
+            ],
+            shared_libs: [
+                "android.hidl.memory@1.0",
+                "vendor.amlogic.hardware.screencontrol@1.0",
+                "libbase",
+                "libutils",
+                "libcutils",
+                "liblog",
+                "libhidlbase",
+                "libhidlmemory",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libscreencontrolservice",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libscreencontrolservice.so",
+            ],
+            shared_libs: [
+                "libui_shim",
+                "vendor.amlogic.hardware.screencontrol@1.0",
+                "libbase",
+                "libutils",
+                "libcutils",
+                "liblog",
+                "libbinder",
+                "libhidlbase",
+                "libhardware",
+                "libui",
+                "libstagefright_foundation",
+                "libmedia_omx",
+                "libmediandk",
+                "libamgralloc_ext",
+                "libmeson_display_adapter_remote",
+                "libyuv",
                 "libc++",
                 "libc",
                 "libm",
@@ -1795,35 +2137,6 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libstagefrighthw",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libstagefrighthw.so",
-            ],
-            shared_libs: [
-                "libbinder",
-                "libcutils",
-                "libui",
-                "liblog",
-                "libutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
     name: "libsystemcontrolservice",
     owner: "amlogic",
     strip: {
@@ -1842,7 +2155,6 @@ cc_prebuilt_library_shared {
                 "vendor.amlogic.hardware.systemcontrol@1.1",
                 "libbase",
                 "libhidlbase",
-                "libbinder",
                 "libc++",
                 "libc",
                 "libm",
@@ -1856,7 +2168,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libthreadworker_alt",
+    name: "libteec",
     owner: "amlogic",
     strip: {
         none: true,
@@ -1864,11 +2176,82 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libthreadworker_alt.so",
+                "proprietary/vendor/lib/libteec.so",
             ],
             shared_libs: [
-                "libutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libvendor_c2common",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libvendor_c2common.so",
+            ],
+            shared_libs: [
+                "libcodec2",
+                "libcodec2_vndk",
+                "libbase",
+                "libbinder",
                 "liblog",
+                "libutils",
+                "libcutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libvendor_c2componentstore",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libvendor_c2componentstore.so",
+            ],
+            shared_libs: [
+                "libbase",
+                "libcodec2",
+                "android.hardware.media.c2@1.0",
+                "android.hardware.media.c2@1.1",
+                "android.hardware.media.c2@1.2",
+                "libcodec2_hidl@1.0",
+                "libcodec2_hidl@1.1",
+                "libcodec2_hidl@1.2",
+                "libcodec2_vndk",
+                "libhidlbase",
+                "vendor.amlogic.hardware.systemcontrol@1.0",
+                "vendor.amlogic.hardware.systemcontrol@1.1",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libvendor_c2common",
+                "libstagefright_xmlparser",
+                "libsystemcontrolservice",
                 "libc++",
                 "libc",
                 "libm",
@@ -1910,7 +2293,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libwvhidl",
+    name: "libvp_hevc_codec_new",
     owner: "amlogic",
     strip: {
         none: true,
@@ -1918,60 +2301,21 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/libwvhidl.so",
+                "proprietary/vendor/lib/libvp_hevc_codec_new.so",
             ],
             shared_libs: [
-                "android.hardware.drm@1.0",
-                "android.hardware.drm@1.1",
-                "android.hardware.drm@1.2",
-                "android.hardware.drm@1.3",
-                "android.hardware.drm@1.4",
-                "android.hidl.memory@1.0",
-                "libbase",
-                "libcrypto",
                 "libcutils",
-                "libhidlbase",
-                "libhidlmemory",
-                "liblog",
-                "libprotobuf-cpp-lite-3.9.1-vendorcompat",
                 "libutils",
+                "libge2d-2.0",
+                "libm",
+                "liblog",
                 "libc++",
                 "libc",
-                "libm",
                 "libdl",
             ],
         },
     },
     compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libavl",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/soundfx/libavl.so",
-            ],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                "libamaudioutils",
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    relative_install_path: "soundfx",
     prefer: true,
     soc_specific: true,
 }
@@ -1991,6 +2335,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libutils",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "liblog",
                 "libc++",
                 "libc",
@@ -2006,7 +2351,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libdbx",
+    name: "libdpe",
     owner: "amlogic",
     strip: {
         none: true,
@@ -2014,12 +2359,13 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/soundfx/libdbx.so",
+                "proprietary/vendor/lib/soundfx/libdpe.so",
             ],
             shared_libs: [
                 "libcutils",
                 "libutils",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "liblog",
                 "libc++",
                 "libc",
@@ -2049,6 +2395,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libutils",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "liblog",
                 "libc++",
                 "libc",
@@ -2064,7 +2411,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libms12dapwrapper",
+    name: "libms12v2dapwrapper",
     owner: "amlogic",
     strip: {
         none: true,
@@ -2072,41 +2419,17 @@ cc_prebuilt_library_shared {
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/lib/soundfx/libms12dapwrapper.so",
+                "proprietary/vendor/lib/soundfx/libms12v2dapwrapper.so",
             ],
             shared_libs: [
                 "libcutils",
                 "libutils",
                 "libamaudioutils",
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    relative_install_path: "soundfx",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libsrswrapper",
-    owner: "amlogic",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/soundfx/libsrswrapper.so",
-            ],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                "libamaudioutils",
+                "libamaudioutils_boot",
+                "android.hardware.audio@4.0",
+                "android.hardware.audio.common@4.0",
+                "android.hardware.audio.common@4.0-util",
+                "audio.primary.amlogic",
                 "liblog",
                 "libc++",
                 "libc",
@@ -2136,6 +2459,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libutils",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "liblog",
                 "libc++",
                 "libc",
@@ -2166,6 +2490,7 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libaudioutils",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "liblog",
                 "libc++",
                 "libc",
@@ -2195,6 +2520,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libutils",
                 "libamaudioutils",
+                "libamaudioutils_boot",
                 "liblog",
                 "libc++",
                 "libc",
@@ -2247,6 +2573,62 @@ cc_prebuilt_library_shared {
         android_arm: {
             srcs: [
                 "proprietary/vendor/lib/vendor.amlogic.hardware.droidvold@1.0.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.amlogic.hardware.errormonitor@1.0",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.amlogic.hardware.errormonitor@1.0.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.amlogic.hardware.screencontrol@1.0",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.amlogic.hardware.screencontrol@1.0.so",
             ],
             shared_libs: [
                 "libhidlbase",
@@ -2350,58 +2732,167 @@ cc_prebuilt_library_shared {
     soc_specific: true,
 }
 
-android_app_import {
-    name: "Adt3LauncherCustomization",
+cc_prebuilt_library_shared {
+    name: "libHwAudio_dcvdec",
     owner: "amlogic",
-    apk: "proprietary/product/priv-app/Adt3LauncherCustomization/Adt3LauncherCustomization.apk",
-    certificate: "platform",
-    dex_preopt: {
-        enabled: false,
+    strip: {
+        none: true,
     },
-    privileged: true,
-    product_specific: true,
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/odm/lib/libHwAudio_dcvdec.so",
+            ],
+            shared_libs: [
+                "libutils",
+                "libcutils",
+                "liblog",
+                "libm",
+                "libc++",
+                "libc",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    device_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libHwAudio_dtshd",
+    owner: "amlogic",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/odm/lib/libHwAudio_dtshd.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libc",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    device_specific: true,
+}
+
+prebuilt_lib {
+    name: "amlogic_fbc_lib",
+    owner: "amlogic",
+    src: "proprietary/vendor_dlkm/lib/modules/amlogic_fbc_lib.ko",
+    filename: "amlogic_fbc_lib.ko",
+    sub_dir: "modules",
+    vendor_dlkm_specific: true,
+}
+
+prebuilt_apex {
+    name: "com.google.android.widevine.nonupdatable",
+    owner: "amlogic",
+    src: "proprietary/vendor/apex/com.google.android.widevine.nonupdatable.apex",
+    filename: "com.google.android.widevine.nonupdatable.apex",
+    soc_specific: true,
+}
+
+dex_import {
+    name: "droidlogic.software.core",
+    owner: "amlogic",
+    jars: [
+        "proprietary/vendor/framework/droidlogic.software.core.jar",
+    ],
+    soc_specific: true,
 }
 
 prebuilt_etc_xml {
-    name: "android.hardware.dumpstate@1.1-service.droidlogic.xml",
+    name: "android.hardware.graphics.composer@3.2-service.droidlogic.xml",
     owner: "amlogic",
-    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.dumpstate@1.1-service.droidlogic.xml",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.graphics.composer@3.2-service.droidlogic.xml",
     filename_from_src: true,
     sub_dir: "vintf/manifest",
     soc_specific: true,
 }
 
 prebuilt_etc_xml {
-    name: "android.hardware.graphics.composer@2.4-service.droidlogic.xml",
+    name: "android.hardware.media.c2@1.2-service.xml",
     owner: "amlogic",
-    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.graphics.composer@2.4-service.droidlogic.xml",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.media.c2@1.2-service.xml",
     filename_from_src: true,
     sub_dir: "vintf/manifest",
     soc_specific: true,
 }
 
 prebuilt_etc_xml {
-    name: "android.hardware.thermal@2.0-service.droidlogic.xml",
+    name: "android.hardware.tv.hdmi.cec-service.droidlogic.xml",
     owner: "amlogic",
-    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.droidlogic.xml",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.tv.hdmi.cec-service.droidlogic.xml",
     filename_from_src: true,
     sub_dir: "vintf/manifest",
     soc_specific: true,
 }
 
 prebuilt_etc_xml {
-    name: "android.hardware.usb.gadget@1.2-service.droidlogic.xml",
+    name: "android.hardware.tv.hdmi.connection-service.droidlogic.xml",
     owner: "amlogic",
-    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.2-service.droidlogic.xml",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.tv.hdmi.connection-service.droidlogic.xml",
     filename_from_src: true,
     sub_dir: "vintf/manifest",
     soc_specific: true,
 }
 
 prebuilt_etc_xml {
-    name: "manifest_android.hardware.drm@1.4-service.widevine.xml",
+    name: "android.hardware.usb-service.xml",
     owner: "amlogic",
-    src: "proprietary/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.widevine.xml",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.usb-service.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "android.hardware.usb.gadget-service.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.usb.gadget-service.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "dumpstate-default.droidlogic.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/dumpstate-default.droidlogic.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "manifest_allocator.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/manifest_allocator.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "manifest_mapper.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/manifest_mapper.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "mapper.arm.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/mapper.arm.xml",
     filename_from_src: true,
     sub_dir: "vintf/manifest",
     soc_specific: true,
@@ -2416,80 +2907,53 @@ prebuilt_etc_xml {
     soc_specific: true,
 }
 
+prebuilt_etc_xml {
+    name: "thermal.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/thermal.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "vendor.amlogic.hardware.screencontrol@1.0.xml",
+    owner: "amlogic",
+    src: "proprietary/vendor/etc/vintf/manifest/vendor.amlogic.hardware.screencontrol@1.0.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "android.hardware.fastboot-service.amlogic.xml",
+    owner: "amlogic",
+    src: "proprietary/recovery/system/etc/vintf/manifest/android.hardware.fastboot-service.amlogic.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    recovery: true,
+}
+
 cc_prebuilt_binary {
-    name: "DecInfo_test",
+    name: "android.hardware.audio.service-droidlogic",
     owner: "amlogic",
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/bin/DecInfo_test",
-            ],
-            shared_libs: [
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-sh_binary {
-    name: "ddrtest",
-    owner: "amlogic",
-    src: "proprietary/vendor/bin/ddrtest.sh",
-    filename: "ddrtest.sh",
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "esplayer",
-    owner: "amlogic",
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/bin/esplayer",
-            ],
-            shared_libs: [
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "hdcp_tx22",
-    owner: "amlogic",
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/bin/hdcp_tx22",
+                "proprietary/vendor/bin/hw/android.hardware.audio.service-droidlogic",
             ],
             shared_libs: [
                 "libcutils",
-                "libutils",
+                "libbinder",
+                "libbinder_ndk",
+                "libhidlbase",
                 "liblog",
+                "libutils",
+                "libhardware",
                 "libc++",
-                "libdl",
                 "libc",
                 "libm",
+                "libdl",
             ],
         },
     },
@@ -2498,24 +2962,29 @@ cc_prebuilt_binary {
         none: true,
     },
     prefer: true,
+    relative_install_path: "hw",
     soc_specific: true,
 }
 
 cc_prebuilt_binary {
-    name: "android.hardware.bluetooth@1.0-service-droidlogic",
+    name: "android.hardware.bluetooth@1.1-service-droidlogic",
     owner: "amlogic",
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/bin/hw/android.hardware.bluetooth@1.0-service-droidlogic",
+                "proprietary/vendor/bin/hw/android.hardware.bluetooth@1.1-service-droidlogic",
             ],
             shared_libs: [
+                "libz",
                 "liblog",
                 "libcutils",
                 "libbase",
                 "libutils",
                 "libhardware",
                 "libhidlbase",
+                "libhardware_legacy",
+                "android.hardware.bluetooth@1.0-impl",
+                "android.hardware.bluetooth@1.1",
                 "android.hardware.bluetooth@1.0",
                 "libc++",
                 "libc",
@@ -2534,58 +3003,22 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
-    name: "android.hardware.drm@1.4-service.widevine",
+    name: "android.hardware.dumpstate-service.droidlogic",
     owner: "amlogic",
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/bin/hw/android.hardware.drm@1.4-service.widevine",
+                "proprietary/vendor/bin/hw/android.hardware.dumpstate-service.droidlogic",
             ],
             shared_libs: [
-                "android.hardware.drm@1.0",
-                "android.hardware.drm@1.1",
-                "android.hardware.drm@1.2",
-                "android.hardware.drm@1.3",
                 "libbase",
-                "libhidlbase",
-                "liblog",
-                "libutils",
-                "libbinder",
-                "android.hardware.drm@1.4",
-                "libwvhidl",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    relative_install_path: "hw",
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "android.hardware.dumpstate@1.1-service.droidlogic",
-    owner: "amlogic",
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/bin/hw/android.hardware.dumpstate@1.1-service.droidlogic",
-            ],
-            shared_libs: [
-                "android.hardware.dumpstate@1.0",
-                "android.hardware.dumpstate@1.1",
-                "libbase",
+                "libz",
+                "libbinder_ndk",
                 "libcutils",
                 "libdumpstateutil",
-                "libhidlbase",
                 "liblog",
                 "libutils",
+                "android.hardware.dumpstate-V1-ndk",
                 "libc++",
                 "libc",
                 "libm",
@@ -2603,18 +3036,22 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
-    name: "android.hardware.graphics.allocator@4.0-service",
+    name: "android.hardware.graphics.allocator-service",
     owner: "amlogic",
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/bin/hw/android.hardware.graphics.allocator@4.0-service",
+                "proprietary/vendor/bin/hw/android.hardware.graphics.allocator-service",
             ],
             shared_libs: [
-                "android.hardware.graphics.allocator@4.0",
-                "libhidlbase",
+                "android.hardware.graphics.common-V7-ndk",
+                "android.hardware.graphics.common@1.2",
+                "libbase",
                 "liblog",
                 "libutils",
+                "libbinder_ndk",
+                "android.hardware.graphics.allocator-V2-ndk",
+                "android.hardware.graphics.allocator-V2-arm",
                 "libc++",
                 "libc",
                 "libm",
@@ -2632,23 +3069,37 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
-    name: "android.hardware.graphics.composer@2.4-service.droidlogic",
+    name: "android.hardware.graphics.composer@3.2-service.droidlogic",
     owner: "amlogic",
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/bin/hw/android.hardware.graphics.composer@2.4-service.droidlogic",
+                "proprietary/vendor/bin/hw/android.hardware.graphics.composer@3.2-service.droidlogic",
             ],
             shared_libs: [
-                "android.hardware.graphics.composer@2.1",
-                "android.hardware.graphics.composer@2.2",
-                "android.hardware.graphics.composer@2.3",
-                "android.hardware.graphics.composer@2.4",
-                "android.hardware.graphics.composer@2.1-resources-vendor",
-                "android.hardware.graphics.composer@2.2-resources-vendor",
+                "libion",
+                "libge2d-2.0",
+                "libvideotunnel",
+                "libEGL",
+                "libGLESv1_CM",
+                "libGLESv2",
+                "libmeson_mode_policy",
+                "vendor.amlogic.hardware.systemcontrol@1.0",
+                "vendor.amlogic.hardware.systemcontrol@1.1",
+                "libpng",
+                "libz",
+                "vendor.amlogic.hardware.errormonitor@1.0",
+                "liberrormonitorclient",
+                "libteec",
+                "android.hardware.graphics.composer3-V2-ndk",
+                "android.hardware.graphics.composer@2.1-resources-aidl",
+                "android.hardware.graphics.composer@2.2-resources-aidl",
+                "android.hardware.graphics.mapper@2.0",
+                "android.hardware.graphics.mapper@4.0",
                 "libbase",
                 "libbinder",
                 "libcutils",
+                "libbinder_ndk",
                 "libfmq",
                 "libhardware",
                 "libhidlbase",
@@ -2658,6 +3109,49 @@ cc_prebuilt_binary {
                 "libsync",
                 "libutils",
                 "libamgralloc_ext",
+                "libdrm",
+                "libjsoncpp",
+                "libui",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.media.c2@1.2-service",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.media.c2@1.2-service",
+            ],
+            shared_libs: [
+                "libavservices_minijail",
+                "libbase",
+                "liblog",
+                "libcodec2",
+                "libutils",
+                "android.hardware.media.c2@1.0",
+                "android.hardware.media.c2@1.1",
+                "android.hardware.media.c2@1.2",
+                "libcodec2_hidl@1.0",
+                "libcodec2_hidl@1.1",
+                "libcodec2_hidl@1.2",
+                "libcodec2_vndk",
+                "libhidlbase",
+                "libbinder",
+                "libvendor_c2componentstore",
                 "libc++",
                 "libc",
                 "libm",
@@ -2683,7 +3177,7 @@ cc_prebuilt_binary {
                 "proprietary/vendor/bin/hw/android.hardware.memtrack-service.droidlogic",
             ],
             shared_libs: [
-                "libbase-v33",
+                "libbase",
                 "libbinder_ndk",
                 "libmemtrack-amlogic",
                 "android.hardware.memtrack-V1-ndk",
@@ -2704,22 +3198,20 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
-    name: "android.hardware.thermal@2.0-service.droidlogic",
+    name: "android.hardware.thermal-service.droidlogic",
     owner: "amlogic",
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/bin/hw/android.hardware.thermal@2.0-service.droidlogic",
+                "proprietary/vendor/bin/hw/android.hardware.thermal-service.droidlogic",
             ],
             shared_libs: [
-                "libbase_shim",
                 "libbase",
-                "libcutils",
-                "libhidlbase",
-                "libjsoncpp",
+                "libbinder_ndk",
+                "android.hardware.thermal-V1-ndk",
                 "libutils",
-                "android.hardware.thermal@1.0",
-                "android.hardware.thermal@2.0",
+                "libcutils",
+                "libjsoncpp",
                 "libc++",
                 "libc",
                 "libm",
@@ -2737,22 +3229,85 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
-    name: "android.hardware.usb.gadget@1.2-service.droidlogic",
+    name: "android.hardware.tv.hdmi.cec-service.droidlogic",
     owner: "amlogic",
     target: {
         android_arm: {
             srcs: [
-                "proprietary/vendor/bin/hw/android.hardware.usb.gadget@1.2-service.droidlogic",
+                "proprietary/vendor/bin/hw/android.hardware.tv.hdmi.cec-service.droidlogic",
             ],
             shared_libs: [
-                "libbase_shim",
-                "android.hardware.usb.gadget@1.0",
-                "android.hardware.usb.gadget@1.1",
-                "android.hardware.usb.gadget@1.2",
+                "libbinder_ndk",
+                "liblog",
                 "libbase",
+                "libutils",
                 "libcutils",
                 "libhardware",
                 "libhidlbase",
+                "android.hardware.tv.hdmi.cec-V1-ndk",
+                "libhdmi_cec",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.tv.hdmi.connection-service.droidlogic",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.tv.hdmi.connection-service.droidlogic",
+            ],
+            shared_libs: [
+                "libbinder_ndk",
+                "liblog",
+                "libbase",
+                "libutils",
+                "libhardware",
+                "libhidlbase",
+                "android.hardware.tv.hdmi.connection-V1-ndk",
+                "libhdmi_cec",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.usb-service.droidlogic",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.usb-service.droidlogic",
+            ],
+            shared_libs: [
+                "android.hardware.usb-V2-ndk",
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
                 "liblog",
                 "libutils",
                 "libc++",
@@ -2772,6 +3327,67 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
+    name: "android.hardware.usb.gadget-service.droidlogic",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.usb.gadget-service.droidlogic",
+            ],
+            shared_libs: [
+                "libbase",
+                "libbinder",
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libhardware",
+                "android.hardware.usb.gadget-V1-ndk",
+                "android.frameworks.stats-V1-ndk",
+                "libcutils",
+                "libbinder_ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "modules_load",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/modules_load",
+            ],
+            shared_libs: [
+                "liblog",
+                "libbase",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
     name: "remotecfg",
     owner: "amlogic",
     target: {
@@ -2780,6 +3396,107 @@ cc_prebuilt_binary {
                 "proprietary/vendor/bin/remotecfg",
             ],
             shared_libs: [
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "resmanload",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/resmanload",
+            ],
+            shared_libs: [
+                "libmediahal_resman",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "screencatch",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/screencatch",
+            ],
+            shared_libs: [
+                "vendor.amlogic.hardware.screencontrol@1.0",
+                "libbinder",
+                "libstagefright_foundation",
+                "libhardware",
+                "libutils",
+                "libcutils",
+                "liblog",
+                "libui",
+                "libscreencontrolservice",
+                "libmediandk",
+                "libamgralloc_ext",
+                "libmeson_display_adapter_remote",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "screencontrol",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/screencontrol",
+            ],
+            shared_libs: [
+                "vendor.amlogic.hardware.screencontrol@1.0",
+                "android.hidl.allocator@1.0",
+                "android.hidl.memory@1.0",
+                "libbinder",
+                "libhardware",
+                "libhidlbase",
+                "libhidlmemory",
+                "libcutils",
+                "libutils",
+                "liblog",
+                "libui",
+                "libstagefright_foundation",
+                "libscreencontrolservice",
+                "libmediandk",
+                "libamgralloc_ext",
+                "libmeson_display_adapter_remote",
                 "libc++",
                 "libc",
                 "libm",
@@ -2819,6 +3536,8 @@ cc_prebuilt_binary {
                 "vendor.amlogic.hardware.systemcontrol@1.0",
                 "vendor.amlogic.hardware.systemcontrol@1.1",
                 "libmeson_display_adapter_remote",
+                "libprovision",
+                "libvideotunnel",
                 "libc++",
                 "libc",
                 "libdl",
@@ -2831,4 +3550,97 @@ cc_prebuilt_binary {
     },
     prefer: true,
     soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "tspacktest",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/tspacktest",
+            ],
+            shared_libs: [
+                "vendor.amlogic.hardware.screencontrol@1.0",
+                "libbinder",
+                "libstagefright_foundation",
+                "libhardware",
+                "libutils",
+                "libcutils",
+                "liblog",
+                "libscreencontrolservice",
+                "libmediandk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.fastboot-service.amlogic_recovery",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/recovery/system/bin/hw/android.hardware.fastboot-service.amlogic_recovery",
+            ],
+            shared_libs: [
+                "libbase",
+                "libext4_utils",
+                "libfs_mgr",
+                "libhidlbase",
+                "libbinder_ndk",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "android.hardware.fastboot@1.0",
+                "android.hardware.fastboot@1.1",
+                "android.hardware.fastboot-V1-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    recovery: true,
+}
+
+cc_prebuilt_binary {
+    name: "systemcontrol_static",
+    owner: "amlogic",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/recovery/system/bin/systemcontrol_static",
+            ],
+            shared_libs: [
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    recovery: true,
 }
