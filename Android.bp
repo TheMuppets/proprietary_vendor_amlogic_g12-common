@@ -2782,29 +2782,11 @@ cc_prebuilt_library_shared {
     device_specific: true,
 }
 
-prebuilt_lib {
-    name: "amlogic_fbc_lib",
-    owner: "amlogic",
-    src: "proprietary/vendor_dlkm/lib/modules/amlogic_fbc_lib.ko",
-    filename: "amlogic_fbc_lib.ko",
-    sub_dir: "modules",
-    vendor_dlkm_specific: true,
-}
-
 prebuilt_apex {
     name: "com.google.android.widevine.nonupdatable",
     owner: "amlogic",
     src: "proprietary/vendor/apex/com.google.android.widevine.nonupdatable.apex",
     filename: "com.google.android.widevine.nonupdatable.apex",
-    soc_specific: true,
-}
-
-dex_import {
-    name: "droidlogic.software.core",
-    owner: "amlogic",
-    jars: [
-        "proprietary/vendor/framework/droidlogic.software.core.jar",
-    ],
     soc_specific: true,
 }
 
